@@ -1,0 +1,27 @@
+{
+  "name": "todo_webservice",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "a todo webservice for a flutter mobile app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RegNex/TOT-todo-webservice.git"
+  },
+  "author": "Etornam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RegNex/TOT-todo-webservice/issues"
+  },
+  "homepage": "https://github.com/RegNex/TOT-todo-webservice#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
