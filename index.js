@@ -1,13 +1,17 @@
+import dotenv from 'dotenv'
 import express from 'express';
 import mongoose from 'mongoose';
 import TodoModel from './schemas/todo_schema.js';
+
+dotenv.config()
 
 const app = express();
 app.use(express.json());
 
 const port = 3000;
+const db = process.env.DB_URL;
 
-mongoose.connect('mongodb://localhost/todo_db', {
+mongoose.connect(db, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
