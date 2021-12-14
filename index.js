@@ -84,11 +84,7 @@ const {id} = req.params;
 
     const todoModel = await TodoModel.findById(id);
     if(todoModel){
-        return res.status(200).json({
-            status:true,
-            message: 'Todos fetched successfully',
-            data: todoModel
-        })
+        return res.status(200).json(todoModel)
     }else{
         return res.status(400).json({
             status:false,
@@ -108,11 +104,7 @@ const todoModel = await TodoModel.create({
 })
 
     if(todoModel){
-        return res.status(201).json({
-            status:true,
-            message: 'Todos created',
-            data: todoModel
-        })
+        return res.status(200).json(todoModel)
     }else{
         return res.status(400).json({
             status:false,
@@ -128,11 +120,7 @@ app.patch('/todos/:id', async(req,res)=>{
     const todoModel = await TodoModel.updateOne({status: status}).where({_id: id});
     
     if(todoModel){
-        return res.status(200).json({
-            status:true,
-            message: 'Todos marked as completed!',
-            data: todoModel
-        })
+        return res.status(200).json(todoModel)
     }else{
         return res.status(400).json({
             status:false,
@@ -147,11 +135,7 @@ app.delete('/todos/:id', async(req,res)=>{
 const todoModel = await TodoModel.findByIdAndDelete(req.params.id);
 
 if(todoModel){
-    return res.status(200).json({
-        status:true,
-        message: 'Todo deleted!',
-        data: todoModel
-    })
+    return res.status(200).json(todoModel)
 }else{
     return res.status(400).json({
         status:false,
