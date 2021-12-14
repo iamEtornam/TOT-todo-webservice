@@ -10,11 +10,11 @@ const todoSchema = Schema({
         type: String,
         required: true
     },
-    date_time:{
+    deadline:{
         type: String,
         required: true
     },
-    status:{
+    isCompleted:{
         type: Boolean,
         required: true,
         default: false

@@ -1,7 +1,7 @@
-import dotenv from 'dotenv'
+import cors from 'cors';
+import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
 import TodoModel from './schemas/todo_schema.js';
 
 dotenv.config()
@@ -38,7 +38,27 @@ app.get('/', (req, res) => {
     })
 })
 
+
 ///get all todos
+app.get('/todos',async (req,res)=>{
+    const {status} = req.params;
+    
+    const todoModel = await TodoModel.find({});
+    if(todoModel){
+        return res.status(200).json({
+            status:true,
+            message: 'Todos fetched successfully',
+            data: todoModel
+        })
+    }else{
+        return res.status(400).json({
+            status:false,
+            message: 'Todos not found'
+        })
+    }
+    })
+
+///get all todos based on status
 app.get('/todos/:status',async (req,res)=>{
 const {status} = req.params;
 
@@ -78,13 +98,13 @@ const {id} = req.params;
 })
 
 ///create a todo
-app.post('/todo',async(req,res)=>{
-const {title,description,date_time} = req.body;
+app.post('/todos',async(req,res)=>{
+const {title,description,deadline} = req.body;
 
 const todoModel = await TodoModel.create({
     title,
     description,
-    date_time
+    deadline
 })
 
     if(todoModel){
